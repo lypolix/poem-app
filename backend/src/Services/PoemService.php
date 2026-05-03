@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../DataStore.php';
+require_once __DIR__ . '/../Logger.php';
 
 class PoemService
 {
@@ -23,6 +24,7 @@ class PoemService
     {
         foreach (DataStore::$poems as $poem) {
             if ($poem['id'] === $data['id']) {
+                Logger::error('Poem create duplicate id', ['id' => $data['id']]);
                 throw new Exception('Стихотворение с таким id уже существует');
             }
         }
@@ -37,6 +39,7 @@ class PoemService
         ];
 
         DataStore::$poems[] = $newPoem;
+        DataStore::save();
 
         return $newPoem;
     }
@@ -54,6 +57,7 @@ class PoemService
                     'createdBy' => $data['createdBy'] ?? ''
                 ];
 
+                DataStore::save();
                 return DataStore::$poems[$index];
             }
         }
@@ -66,6 +70,7 @@ class PoemService
         foreach (DataStore::$poems as $index => $poem) {
             if ($poem['id'] === $id) {
                 array_splice(DataStore::$poems, $index, 1);
+                DataStore::save();
                 return;
             }
         }

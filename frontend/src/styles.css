@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f1ea;
+  color: #2f2a26;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1, h3, h4 {
+  margin-top: 0;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea, select, button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbbfae;
+  font-size: 14px;
+}
+
+button {
+  background: #7c5c3b;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button.danger {
+  background: #a33a3a;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ece7df;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.poem-text {
+  white-space: pre-wrap;
+  background: #faf7f2;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.message {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.success {
+  background: #dff4df;
+  color: #225c22;
+}
+
+.error {
+  background: #f8dcdc;
+  color: #7a2020;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

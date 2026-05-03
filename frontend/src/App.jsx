@@ -1,122 +1,110 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { api } from './services/api'
+import useLocalStorage from './hooks/useLocalStorage'
+import RoleSelector from './components/RoleSelector'
+import PoemList from './components/PoemList'
+import PoemDetails from './components/PoemDetails'
+import PoemForm from './components/PoemForm'
+import UserList from './components/UserList'
+import UserForm from './components/UserForm'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [role, setRole] = useLocalStorage('role', 'guest')
+  const [poems, setPoems] = useState([])
+  const [users, setUsers] = useState([])
+  const [selectedPoem, setSelectedPoem] = useState(null)
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
+
+  const loadData = async () => {
+    try {
+      const poemsData = await api.getPoems()
+      const usersData = await api.getUsers()
+      setPoems(poemsData)
+      setUsers(usersData)
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  useEffect(() => {
+    loadData()
+  }, [])
+
+  const handlePoemSubmit = async (form) => {
+    setError('')
+    setMessage('')
+    try {
+      if (selectedPoem) {
+        await api.updatePoem(selectedPoem.id, form)
+        setMessage('Стихотворение успешно обновлено')
+      } else {
+        await api.createPoem(form)
+        setMessage('Стихотворение успешно добавлено')
+      }
+      setSelectedPoem(null)
+      await loadData()
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  const handleDeletePoem = async (id) => {
+    setError('')
+    setMessage('')
+    try {
+      await api.deletePoem(id)
+      setMessage('Стихотворение удалено')
+      if (selectedPoem?.id === id) {
+        setSelectedPoem(null)
+      }
+      await loadData()
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  const handleCreateUser = async (form) => {
+    setError('')
+    setMessage('')
+    try {
+      await api.createUser(form)
+      setMessage('Пользователь успешно добавлен')
+      await loadData()
+    } catch (e) {
+      setError(e.message)
+    }
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="container">
+      <h1>Клиент-серверное приложение «Стихотворение»</h1>
 
-      <div className="ticks"></div>
+      <RoleSelector role={role} setRole={setRole} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      {message && <div className="message success">{message}</div>}
+      {error && <div className="message error">{error}</div>}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <div className="grid">
+        <PoemList
+          poems={poems}
+          onSelect={setSelectedPoem}
+          onDelete={handleDeletePoem}
+          role={role}
+        />
+        <PoemDetails poem={selectedPoem} />
+      </div>
+
+      <PoemForm
+        onSubmit={handlePoemSubmit}
+        selectedPoem={selectedPoem}
+        role={role}
+      />
+
+      <div className="grid">
+        <UserList users={users} />
+        <UserForm onSubmit={handleCreateUser} role={role} />
+      </div>
+    </div>
   )
 }
-
-export default App
