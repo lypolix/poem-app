@@ -15,6 +15,7 @@ class PoemController
 
     public function index(): void
     {
+        Logger::info('Listed poems');
         jsonResponse($this->service->getAll());
     }
 
@@ -23,6 +24,7 @@ class PoemController
         $poem = $this->service->getById($id);
 
         if (!$poem) {
+            Logger::error('Poem not found', ['id' => $id]);
             jsonResponse(['message' => 'Стихотворение не найдено'], 404);
         }
 
@@ -35,13 +37,16 @@ class PoemController
         $validation = PoemValidator::validate($data);
 
         if (!$validation['valid']) {
+            Logger::error('Poem validation failed', ['message' => $validation['message']]);
             jsonResponse(['message' => $validation['message']], 422);
         }
 
         try {
             $poem = $this->service->create($data);
+            Logger::info('Poem created', ['id' => $poem['id'], 'title' => $poem['title']]);
             jsonResponse($poem, 201);
         } catch (Exception $e) {
+            Logger::error('Poem create failed', ['error' => $e->getMessage()]);
             jsonResponse(['message' => $e->getMessage()], 400);
         }
     }
@@ -52,13 +57,16 @@ class PoemController
         $validation = PoemValidator::validate($data, true);
 
         if (!$validation['valid']) {
+            Logger::error('Poem update validation failed', ['id' => $id, 'message' => $validation['message']]);
             jsonResponse(['message' => $validation['message']], 422);
         }
 
         try {
             $poem = $this->service->update($id, $data);
+            Logger::info('Poem updated', ['id' => $id]);
             jsonResponse($poem);
         } catch (Exception $e) {
+            Logger::error('Poem update failed', ['id' => $id, 'error' => $e->getMessage()]);
             jsonResponse(['message' => $e->getMessage()], 404);
         }
     }
@@ -67,8 +75,10 @@ class PoemController
     {
         try {
             $this->service->delete($id);
+            Logger::info('Poem deleted', ['id' => $id]);
             jsonResponse(['message' => 'Стихотворение удалено']);
         } catch (Exception $e) {
+            Logger::error('Poem delete failed', ['id' => $id, 'error' => $e->getMessage()]);
             jsonResponse(['message' => $e->getMessage()], 404);
         }
     }
