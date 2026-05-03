@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "name": "Анна",
+        "email": "anna@example.com",
+        "age": 21,
+        "role": "admin"
+    },
+    {
+        "id": "2",
+        "name": "Мария",
+        "email": "maria@example.com",
+        "age": 22,
+        "role": "editor"
+    },
+    {
+        "id": "3",
+        "name": "Иван ",
+        "email": "ivan@test.ru",
+        "age": 45
+    }
+]

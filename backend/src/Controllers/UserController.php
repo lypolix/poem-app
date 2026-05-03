@@ -15,6 +15,7 @@ class UserController
 
     public function index(): void
     {
+        Logger::info('Listed users');
         jsonResponse($this->service->getAll());
     }
 
@@ -23,6 +24,7 @@ class UserController
         $user = $this->service->getById($id);
 
         if (!$user) {
+            Logger::error('User not found', ['id' => $id]);
             jsonResponse(['message' => 'Пользователь не найден'], 404);
         }
 
@@ -35,13 +37,16 @@ class UserController
         $validation = UserValidator::validate($data);
 
         if (!$validation['valid']) {
+            Logger::error('User validation failed', ['message' => $validation['message']]);
             jsonResponse(['message' => $validation['message']], 422);
         }
 
         try {
             $user = $this->service->create($data);
+            Logger::info('User created', ['id' => $user['id'], 'name' => $user['name']]);
             jsonResponse($user, 201);
         } catch (Exception $e) {
+            Logger::error('User create failed', ['error' => $e->getMessage()]);
             jsonResponse(['message' => $e->getMessage()], 400);
         }
     }
