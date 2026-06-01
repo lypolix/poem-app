@@ -1,20 +1,39 @@
 import { useEffect, useState } from 'react'
 import { api } from './services/api'
 import useLocalStorage from './hooks/useLocalStorage'
-import RoleSelector from './components/RoleSelector'
+import LoginForm from './components/LoginForm'
+import CreateUserForm from './components/CreateUserForm'
 import PoemList from './components/PoemList'
 import PoemDetails from './components/PoemDetails'
 import PoemForm from './components/PoemForm'
 import UserList from './components/UserList'
-import UserForm from './components/UserForm'
 
 export default function App() {
-  const [role, setRole] = useLocalStorage('role', 'guest')
+  const [currentUser, setCurrentUser] = useState(null)
   const [poems, setPoems] = useState([])
   const [users, setUsers] = useState([])
   const [selectedPoem, setSelectedPoem] = useState(null)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken')
+    if (token) {
+      api.setAuthToken(token)
+      restoreUser()
+    }
+  }, [])
+
+  const restoreUser = async () => {
+    try {
+      const user = await api.getCurrentUser()
+      setCurrentUser(user)
+    } catch (e) {
+      localStorage.removeItem('authToken')
+      api.setAuthToken(null)
+    }
+  }
 
   const loadData = async () => {
     try {
@@ -28,8 +47,25 @@ export default function App() {
   }
 
   useEffect(() => {
-    loadData()
-  }, [])
+    if (currentUser) {
+      loadData()
+    }
+  }, [currentUser])
+
+  const handleLoginSuccess = (userData) => {
+    setCurrentUser(userData)
+    setMessage('Вы успешно вошли!')
+  }
+
+  const handleLogout = async () => {
+    try {
+      await api.logout()
+      setCurrentUser(null)
+      setMessage('Вы успешно вышли')
+    } catch (e) {
+      setError(e.message)
+    }
+  }
 
   const handlePoemSubmit = async (form) => {
     setError('')
@@ -67,20 +103,40 @@ export default function App() {
   const handleCreateUser = async (form) => {
     setError('')
     setMessage('')
+    setLoading(true)
     try {
       await api.createUser(form)
       setMessage('Пользователь успешно добавлен')
       await loadData()
     } catch (e) {
       setError(e.message)
+    } finally {
+      setLoading(false)
     }
+  }
+
+  if (!currentUser) {
+    return (
+      <div className="container">
+        <h1>Клиент-серверное приложение «Стихотворение»</h1>
+        <div className="login-container">
+          <LoginForm onLoginSuccess={handleLoginSuccess} />
+          {message && <div className="message success">{message}</div>}
+          {error && <div className="message error">{error}</div>}
+        </div>
+      </div>
+    )
   }
 
   return (
     <div className="container">
-      <h1>Клиент-серверное приложение «Стихотворение»</h1>
-
-      <RoleSelector role={role} setRole={setRole} />
+      <div className="header">
+        <h1>Клиент-серверное приложение «Стихотворение»</h1>
+        <div className="user-info">
+          <span>{currentUser.name} ({currentUser.role})</span>
+          <button onClick={handleLogout} className="logout-btn">Выход</button>
+        </div>
+      </div>
 
       {message && <div className="message success">{message}</div>}
       {error && <div className="message error">{error}</div>}
@@ -90,7 +146,7 @@ export default function App() {
           poems={poems}
           onSelect={setSelectedPoem}
           onDelete={handleDeletePoem}
-          role={role}
+          role={currentUser.role}
         />
         <PoemDetails poem={selectedPoem} />
       </div>
@@ -98,13 +154,18 @@ export default function App() {
       <PoemForm
         onSubmit={handlePoemSubmit}
         selectedPoem={selectedPoem}
-        role={role}
+        role={currentUser.role}
       />
 
-      <div className="grid">
-        <UserList users={users} />
-        <UserForm onSubmit={handleCreateUser} role={role} />
-      </div>
+      {currentUser.role === 'admin' && (
+        <div className="admin-section">
+          <h2>Управление пользователями</h2>
+          <div className="grid">
+            <CreateUserForm onSubmit={handleCreateUser} loading={loading} />
+            <UserList users={users} />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

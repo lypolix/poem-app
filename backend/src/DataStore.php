@@ -5,9 +5,11 @@ class DataStore
     private static string $dataDir = __DIR__ . '/../data';
     private static string $usersFile = __DIR__ . '/../data/users.json';
     private static string $poemsFile = __DIR__ . '/../data/poems.json';
+    private static string $sessionsFile = __DIR__ . '/../data/sessions.json';
 
     public static array $users = [];
     public static array $poems = [];
+    public static array $sessions = [];
 
     public static function init(): void
     {
@@ -31,16 +33,20 @@ class DataStore
             self::$users = [
                 [
                     'id' => '1',
-                    'name' => 'Анна',
-                    'email' => 'anna@example.com',
-                    'age' => 21,
+                    'username' => 'admin',
+                    'name' => 'Администратор',
+                    'email' => 'admin@example.com',
+                    'age' => 30,
+                    'password' => password_hash('admin123', PASSWORD_DEFAULT),
                     'role' => 'admin'
                 ],
                 [
                     'id' => '2',
+                    'username' => 'editor1',
                     'name' => 'Мария',
                     'email' => 'maria@example.com',
                     'age' => 22,
+                    'password' => password_hash('password123', PASSWORD_DEFAULT),
                     'role' => 'editor'
                 ]
             ];
@@ -70,11 +76,18 @@ class DataStore
             ];
             self::save();
         }
+
+        if (file_exists(self::$sessionsFile)) {
+            self::$sessions = json_decode(file_get_contents(self::$sessionsFile), true) ?? [];
+        } else {
+            self::$sessions = [];
+        }
     }
 
     public static function save(): void
     {
         file_put_contents(self::$usersFile, json_encode(self::$users, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
         file_put_contents(self::$poemsFile, json_encode(self::$poems, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+        file_put_contents(self::$sessionsFile, json_encode(self::$sessions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
     }
 }
