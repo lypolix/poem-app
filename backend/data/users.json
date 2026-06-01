@@ -1,22 +1,20 @@
 [
     {
         "id": "1",
-        "name": "Анна",
-        "email": "anna@example.com",
-        "age": 21,
+        "username": "admin",
+        "name": "Администратор",
+        "email": "admin@example.com",
+        "age": 30,
+        "password": "$2y$12$MaXi6Y4kB8VQH7S01jl7wOj2McmgF\/ciGyuyPJOWtHRPoo2Cco6NG",
         "role": "admin"
     },
     {
         "id": "2",
+        "username": "editor1",
         "name": "Мария",
         "email": "maria@example.com",
         "age": 22,
+        "password": "$2y$12$1I5Api3eMAdbWe5UMvGbDevG4tSuLU7PdEssqsuILeV.y2tPXhitu",
         "role": "editor"
-    },
-    {
-        "id": "3",
-        "name": "Иван ",
-        "email": "ivan@test.ru",
-        "age": 45
     }
 ]

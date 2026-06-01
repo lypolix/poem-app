@@ -22,18 +22,24 @@ class UserService
 
     public function create(array $data): array
     {
+        // Проверить на дублирование username
         foreach (DataStore::$users as $user) {
-            if ($user['id'] === $data['id']) {
-                Logger::error('User create duplicate id', ['id' => $data['id']]);
-                throw new Exception('Пользователь с таким id уже существует');
+            if ($user['username'] === $data['username']) {
+                Logger::error('User create duplicate username', ['username' => $data['username']]);
+                throw new Exception('Пользователь с таким логином уже существует');
             }
         }
 
+        $newId = (string)(max(array_map(fn($u) => (int)$u['id'], DataStore::$users)) + 1);
+
         $newUser = [
-            'id' => (string)$data['id'],
+            'id' => $newId,
+            'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'age' => $data['age'] ?? null
+            'age' => $data['age'] ?? null,
+            'password' => password_hash($data['password'], PASSWORD_DEFAULT),
+            'role' => $data['role'] ?? 'editor'
         ];
 
         DataStore::$users[] = $newUser;

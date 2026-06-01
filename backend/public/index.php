@@ -23,6 +23,7 @@ require_once __DIR__ . '/../src/Helpers.php';
 require_once __DIR__ . '/../src/Logger.php';
 require_once __DIR__ . '/../src/DataStore.php';
 require_once __DIR__ . '/../src/Router.php';
+require_once __DIR__ . '/../src/Controllers/AuthController.php';
 require_once __DIR__ . '/../src/Controllers/UserController.php';
 require_once __DIR__ . '/../src/Controllers/PoemController.php';
 
@@ -31,8 +32,13 @@ Logger::info('Backend started', ['uri' => $_SERVER['REQUEST_URI'] ?? '']);
 
 $router = new Router();
 
+$authController = new AuthController();
 $userController = new UserController();
 $poemController = new PoemController();
+
+$router->add('POST', '/auth/login', [$authController, 'login']);
+$router->add('POST', '/auth/logout', [$authController, 'logout']);
+$router->add('GET', '/auth/me', [$authController, 'getCurrentUser']);
 
 $router->add('GET', '/users', [$userController, 'index']);
 $router->add('GET', '/users/:id', [$userController, 'show']);

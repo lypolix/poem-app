@@ -1,0 +1,194 @@
+2026-06-01 19:27:50 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:27:50 [INFO] Listed poems
+2026-06-01 19:27:50 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:27:50 [INFO] Listed poems
+2026-06-01 19:27:50 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:27:50 [INFO] Listed users
+2026-06-01 19:27:50 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:27:50 [INFO] Listed users
+2026-06-01 19:36:04 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:04 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:36:13 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:13 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:36:14 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:14 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:36:15 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:15 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:36:23 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:23 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:36:23 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:23 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:36:24 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:24 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:36:24 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:36:24 [ERROR] User not found | {"username":"admin"}
+2026-06-01 19:37:13 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:37:13 [ERROR] Wrong password | {"username":"admin"}
+2026-06-01 19:37:17 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:37:17 [ERROR] Wrong password | {"username":"admin"}
+2026-06-01 19:37:32 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:37:32 [ERROR] Wrong password | {"username":"admin"}
+2026-06-01 19:37:32 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:37:32 [ERROR] Wrong password | {"username":"admin"}
+2026-06-01 19:38:34 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:38:34 [ERROR] Wrong password | {"username":"admin"}
+2026-06-01 19:39:02 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:39:02 [ERROR] Wrong password | {"username":"admin"}
+2026-06-01 19:39:03 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:39:03 [ERROR] Wrong password | {"username":"admin"}
+2026-06-01 19:39:16 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:39:16 [INFO] User logged in | {"username":"admin"}
+2026-06-01 19:39:16 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:39:16 [INFO] Listed poems
+2026-06-01 19:39:16 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:39:16 [INFO] Listed users
+2026-06-01 19:40:46 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:40:46 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:42:41 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:42:41 [INFO] User logged in | {"username":"admin"}
+2026-06-01 19:42:41 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:42:41 [INFO] Listed poems
+2026-06-01 19:42:41 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:42:41 [INFO] Listed users
+2026-06-01 19:43:04 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:43:04 [INFO] Poem created | {"id":"4","title":"ecver"}
+2026-06-01 19:43:04 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:43:04 [INFO] Listed poems
+2026-06-01 19:43:04 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:43:04 [INFO] Listed users
+2026-06-01 19:43:06 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:43:06 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:43:16 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:43:16 [INFO] User logged in | {"username":"admin"}
+2026-06-01 19:43:16 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:43:16 [INFO] Listed poems
+2026-06-01 19:43:16 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:43:16 [INFO] Listed users
+2026-06-01 19:44:01 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:44:10 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:44:10 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:44:16 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:44:16 [ERROR] User not found | {"username":"123"}
+2026-06-01 19:44:28 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:44:28 [INFO] User logged in | {"username":"admin"}
+2026-06-01 19:44:28 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:44:28 [INFO] Listed poems
+2026-06-01 19:44:28 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:44:28 [INFO] Listed users
+2026-06-01 19:44:46 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:45:07 [INFO] Backend started | {"uri":"/poems/4"}
+2026-06-01 19:45:07 [INFO] Poem deleted | {"id":"4"}
+2026-06-01 19:45:07 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:45:07 [INFO] Listed poems
+2026-06-01 19:45:07 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:45:07 [INFO] Listed users
+2026-06-01 19:45:19 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:45:19 [INFO] Poem created | {"id":"24","title":"e2e"}
+2026-06-01 19:45:19 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:45:19 [INFO] Listed poems
+2026-06-01 19:45:19 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:45:19 [INFO] Listed users
+2026-06-01 19:45:28 [INFO] Backend started | {"uri":"/poems/24"}
+2026-06-01 19:45:28 [INFO] Poem updated | {"id":"24"}
+2026-06-01 19:45:28 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:45:28 [INFO] Listed poems
+2026-06-01 19:45:28 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:45:28 [INFO] Listed users
+2026-06-01 19:45:46 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:47:53 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:47:56 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:47:56 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:47:56 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:47:58 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:47:58 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:48:04 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:48:05 [INFO] User logged in | {"username":"admin"}
+2026-06-01 19:48:05 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:48:05 [INFO] Listed poems
+2026-06-01 19:48:05 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:48:05 [INFO] Listed users
+2026-06-01 19:48:24 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:48:25 [INFO] User created | {"id":"3","username":"123"}
+2026-06-01 19:48:25 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:48:25 [INFO] Listed poems
+2026-06-01 19:48:25 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:48:25 [INFO] Listed users
+2026-06-01 19:48:30 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:48:30 [INFO] User logged out | {"username":"admin"}
+2026-06-01 19:48:35 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:48:35 [INFO] User logged in | {"username":"123"}
+2026-06-01 19:48:35 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:48:35 [INFO] Listed poems
+2026-06-01 19:48:35 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:48:35 [INFO] Listed users
+2026-06-01 19:48:48 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:48:48 [INFO] User logged out | {"username":"123"}
+2026-06-01 19:48:55 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:48:55 [ERROR] Wrong password | {"username":"editor1"}
+2026-06-01 19:49:04 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:49:04 [ERROR] Wrong password | {"username":"editor1"}
+2026-06-01 19:49:10 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:49:10 [ERROR] Wrong password | {"username":"editor1"}
+2026-06-01 19:49:21 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:49:21 [ERROR] Wrong password | {"username":"editor1"}
+2026-06-01 19:51:05 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:51:05 [INFO] User logged in | {"username":"editor1"}
+2026-06-01 19:51:05 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:51:05 [INFO] Listed poems
+2026-06-01 19:51:05 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:51:05 [INFO] Listed users
+2026-06-01 19:51:29 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:51:29 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:51:29 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:51:29 [INFO] Listed poems
+2026-06-01 19:51:29 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:51:29 [INFO] Listed poems
+2026-06-01 19:51:29 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:51:29 [INFO] Listed users
+2026-06-01 19:51:29 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:51:29 [INFO] Listed users
+2026-06-01 19:51:40 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:51:40 [INFO] User logged out | {"username":"editor1"}
+2026-06-01 19:51:46 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:51:47 [INFO] User logged in | {"username":"admin"}
+2026-06-01 19:51:47 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:51:47 [INFO] Listed poems
+2026-06-01 19:51:47 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:51:47 [INFO] Listed users
+2026-06-01 19:52:00 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:52:00 [INFO] Backend started | {"uri":"/auth/me"}
+2026-06-01 19:52:00 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:52:00 [INFO] Listed poems
+2026-06-01 19:52:00 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:52:00 [INFO] Listed poems
+2026-06-01 19:52:00 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:52:00 [INFO] Listed users
+2026-06-01 19:52:00 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:52:00 [INFO] Listed users
+2026-06-01 19:52:17 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:52:17 [ERROR] Poem create duplicate id | {"id":"24"}
+2026-06-01 19:52:17 [ERROR] Poem create failed | {"error":"Стихотворение с таким id уже существует"}
+2026-06-01 19:52:30 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:52:30 [INFO] Poem created | {"id":"3","title":"у2у2"}
+2026-06-01 19:52:30 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:52:30 [INFO] Listed poems
+2026-06-01 19:52:30 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:52:30 [INFO] Listed users
+2026-06-01 19:52:37 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:52:37 [INFO] User logged out | {"username":"admin"}
+2026-06-01 19:52:53 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:52:53 [INFO] User logged in | {"username":"editor1"}
+2026-06-01 19:52:53 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:52:53 [INFO] Listed poems
+2026-06-01 19:52:53 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:52:53 [INFO] Listed users
+2026-06-01 19:53:04 [INFO] Backend started | {"uri":"/poems/24"}
+2026-06-01 19:53:04 [INFO] Poem updated | {"id":"24"}
+2026-06-01 19:53:04 [INFO] Backend started | {"uri":"/poems"}
+2026-06-01 19:53:04 [INFO] Listed poems
+2026-06-01 19:53:04 [INFO] Backend started | {"uri":"/users"}
+2026-06-01 19:53:04 [INFO] Listed users
+2026-06-01 19:53:05 [INFO] Backend started | {"uri":"/auth/logout"}
+2026-06-01 19:53:05 [INFO] User logged out | {"username":"editor1"}
+2026-06-01 19:53:28 [INFO] Backend started | {"uri":"/auth/login"}
+2026-06-01 19:53:28 [ERROR] Wrong password | {"username":"admin"}
