@@ -15,3 +15,14 @@ function getJsonInput(): array
 
     return is_array($data) ? $data : [];
 }
+
+function getBearerToken(): ?string
+{
+    $authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+    
+    if (preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
+        return $matches[1];
+    }
+    
+    return null;
+}

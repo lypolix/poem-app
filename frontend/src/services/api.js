@@ -1,9 +1,20 @@
 const API_URL = 'http://localhost:8000'
 
+let authToken = localStorage.getItem('authToken') || null
+
 async function request(path, options = {}) {
+  const headers = {
+    'Content-Type': 'application/json',
+    ...options.headers
+  }
+
+  if (authToken && !options.skipAuth) {
+    headers['Authorization'] = `Bearer ${authToken}`
+  }
+
   const response = await fetch(`${API_URL}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
-    ...options
+    ...options,
+    headers
   })
 
   const data = await response.json()
@@ -16,6 +27,42 @@ async function request(path, options = {}) {
 }
 
 export const api = {
+  login: (username, password) =>
+    request('/auth/login', {
+      method: 'POST',
+      skipAuth: true,
+      body: JSON.stringify({ username, password })
+    }).then(data => {
+      authToken = data.token
+      localStorage.setItem('authToken', authToken)
+      return data
+    }),
+
+  logout: () =>
+    request('/auth/logout', {
+      method: 'POST'
+    }).then(data => {
+      authToken = null
+      localStorage.removeItem('authToken')
+      return data
+    }),
+
+  getCurrentUser: () =>
+    request('/auth/me', {
+      method: 'GET'
+    }),
+
+  setAuthToken: (token) => {
+    authToken = token
+    if (token) {
+      localStorage.setItem('authToken', token)
+    } else {
+      localStorage.removeItem('authToken')
+    }
+  },
+
+  getAuthToken: () => authToken,
+
   getUsers: () => request('/users'),
   getUserById: (id) => request(`/users/${id}`),
   createUser: (payload) =>
